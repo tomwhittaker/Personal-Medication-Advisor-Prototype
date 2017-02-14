@@ -224,15 +224,6 @@ public class window {
 		barcode_1.add(barcodeSubmit);
 		
 		JButton manualEntry = new JButton("Manual Entry");
-		manualEntry.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				profile.setVisible(false);
-				result.setVisible(false);
-				manual.setVisible(true);
-				barcode_1.setVisible(false);
-			}
-		});
 		manualEntry.setBounds(123, 39, 109, 29);
 		panel.add(manualEntry);
 		
@@ -241,15 +232,6 @@ public class window {
 		panel.add(results);
 		
 		JButton barcodeButton = new JButton("Barcode Entry");
-		barcodeButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				profile.setVisible(false);
-				result.setVisible(false);
-				manual.setVisible(false);
-				barcode_1.setVisible(true);
-			}
-		});
 		barcodeButton.setBounds(227, 39, 109, 29);
 		panel.add(barcodeButton);
 		
@@ -257,10 +239,6 @@ public class window {
 		btnProfile.addMouseListener(new MouseAdapter() {
 			
 			public void mouseClicked(MouseEvent e) {
-				profile.setVisible(true);
-				result.setVisible(false);
-				manual.setVisible(false);
-				barcode_1.setVisible(false);
 			}
 		});
 		btnProfile.setBounds(6, 39, 117, 29);
@@ -268,10 +246,7 @@ public class window {
 		results.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				profile.setVisible(false);
-				result.setVisible(true);
-				manual.setVisible(false);
-				barcode_1.setVisible(false);
+				
 			}
 		});
 		
