@@ -270,7 +270,11 @@ public class window {
 		btnProfile.addMouseListener(new MouseAdapter() {
 			
 			public void mouseClicked(MouseEvent e) {
-				
+				textArea.setText("");
+				for (medication medication : medicationList){
+					
+					textArea.append(medication.getName()+"\n");
+				}
 				profile.setVisible(true);
 				result.setVisible(false);
 				barcode_1.setVisible(false);
