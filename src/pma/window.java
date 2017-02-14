@@ -11,6 +11,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.UIManager;
+import javax.swing.JTextArea;
+import java.awt.SystemColor;
+import java.awt.Color;
+import java.util.ArrayList;
 
 public class window {
 
@@ -23,6 +27,7 @@ public class window {
 	private JTextField dosage;
 	private JTextField textField;
 	private JTextField textField_1;
+	private ArrayList<medication> medicationList;
 
 	/**
 	 * Launch the application.
@@ -55,6 +60,13 @@ public class window {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		ArrayList<medication> medicationList = new ArrayList<medication>();
+		medicationList.add(new medication("TEVA UK","Bisoprolol fumarate",5,"5017007025733",28));
+		medicationList.add(new medication("BROWN& BURK","Ramipril",(float) 2.5,"5060124640457",28));
+		medicationList.add(new medication("Aspar","Dispersible Asprin",(float) 75,"5017007050520",28));
+		medicationList.add(new medication("TEVA UK","Atorvastatis",(float) 80,"5017007067719",28));
+		medicationList.add(new medication("Synthon BV","Eplerenone",(float) 25,"5391512452681",28));
+		
 		JPanel panel = new JPanel();
 		panel.setBounds(6, 6, 438, 266);
 		frame.getContentPane().add(panel);
@@ -66,17 +78,61 @@ public class window {
 		txtpnPersonalMedicationAdvisor.setBackground(UIManager.getColor("Button.background"));
 		txtpnPersonalMedicationAdvisor.setText("Personal Medication Advisor");
 		
-		JButton results = new JButton("Results");
-		results.setBounds(335, 39, 109, 29);
-		panel.add(results);
+		JPanel profile = new JPanel();
+		profile.setBounds(6, 69, 438, 191);
+		panel.add(profile);
+		profile.setLayout(null);
 		
-		JButton barcodeButton = new JButton("Barcode Entry");
-		barcodeButton.setBounds(227, 39, 109, 29);
-		panel.add(barcodeButton);
+		JTextPane txtpnMedication = new JTextPane();
+		txtpnMedication.setBackground(SystemColor.window);
+		txtpnMedication.setText("Medication");
+		txtpnMedication.setBounds(6, 6, 103, 16);
+		profile.add(txtpnMedication);
 		
-		JButton manualEntry = new JButton("Manual Entry");
-		manualEntry.setBounds(123, 39, 109, 29);
-		panel.add(manualEntry);
+		JTextArea textArea = new JTextArea();
+		textArea.setBackground(SystemColor.window);
+		textArea.setForeground(Color.BLACK);
+		textArea.setBounds(6, 25, 303, 160);
+		profile.add(textArea);
+		
+		JTextPane txtpnDosage = new JTextPane();
+		txtpnDosage.setBackground(SystemColor.window);
+		txtpnDosage.setText("Dosage");
+		txtpnDosage.setBounds(313, 6, 53, 16);
+		profile.add(txtpnDosage);
+		
+		JTextArea textArea_1 = new JTextArea();
+		textArea_1.setBackground(SystemColor.window);
+		textArea_1.setBounds(323, 25, 109, 160);
+		profile.add(textArea_1);
+		
+		JPanel result = new JPanel();
+		result.setBackground(new Color(255, 140, 0));
+		result.setBounds(6, 69, 438, 191);
+		panel.add(result);
+		result.setLayout(null);
+		
+		JTextPane txtpnAmberWarning = new JTextPane();
+		txtpnAmberWarning.setForeground(new Color(255, 140, 0));
+		txtpnAmberWarning.setBackground(new Color(255, 140, 0));
+		txtpnAmberWarning.setText("Amber Warning");
+		txtpnAmberWarning.setBounds(174, 6, 96, 16);
+		result.add(txtpnAmberWarning);
+		
+		JTextPane txtpnCausedBy = new JTextPane();
+		txtpnCausedBy.setBackground(new Color(255, 140, 0));
+		txtpnCausedBy.setForeground(new Color(255, 140, 0));
+		txtpnCausedBy.setText("Caused By:");
+		txtpnCausedBy.setBounds(6, 30, 68, 16);
+		result.add(txtpnCausedBy);
+		
+		JTextArea txtrBisoprololFumarateAnd = new JTextArea();
+		txtrBisoprololFumarateAnd.setBackground(new Color(255, 140, 0));
+		txtrBisoprololFumarateAnd.setForeground(new Color(0, 0, 0));
+		txtrBisoprololFumarateAnd.setText("Bisoprolol fumarate and Ramipril\nEplerenone and Atorvastatis");
+		txtrBisoprololFumarateAnd.setRows(2);
+		txtrBisoprololFumarateAnd.setBounds(27, 58, 385, 107);
+		result.add(txtrBisoprololFumarateAnd);
 		
 		JPanel manual = new JPanel();
 		manual.setBounds(6, 69, 438, 191);
@@ -140,10 +196,6 @@ public class window {
 		manualSubmit.setBounds(190, 162, 117, 29);
 		manual.add(manualSubmit);
 		
-		JPanel profile = new JPanel();
-		profile.setBounds(6, 69, 438, 191);
-		panel.add(profile);
-		
 		JPanel barcode_1 = new JPanel();
 		barcode_1.setBounds(6, 69, 438, 191);
 		panel.add(barcode_1);
@@ -171,17 +223,32 @@ public class window {
 		barcodeSubmit.setBounds(158, 144, 117, 29);
 		barcode_1.add(barcodeSubmit);
 		
-		JPanel result = new JPanel();
-		result.setBounds(6, 69, 438, 191);
-		panel.add(result);
+		JButton manualEntry = new JButton("Manual Entry");
+		manualEntry.setBounds(123, 39, 109, 29);
+		panel.add(manualEntry);
+		
+		JButton results = new JButton("Results");
+		results.setBounds(335, 39, 109, 29);
+		panel.add(results);
+		
+		JButton barcodeButton = new JButton("Barcode Entry");
+		barcodeButton.setBounds(227, 39, 109, 29);
+		panel.add(barcodeButton);
 		
 		JButton btnProfile = new JButton("Profile");
+		btnProfile.addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		btnProfile.setBounds(6, 39, 117, 29);
 		panel.add(btnProfile);
 		results.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
 			}
 		});
+		
 	}
 }
