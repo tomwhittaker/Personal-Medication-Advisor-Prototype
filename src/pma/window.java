@@ -113,7 +113,7 @@ public class window {
 		result.setLayout(null);
 		
 		JTextPane txtpnAmberWarning = new JTextPane();
-		txtpnAmberWarning.setForeground(new Color(255, 140, 0));
+		txtpnAmberWarning.setForeground(Color.BLACK);
 		txtpnAmberWarning.setBackground(new Color(255, 140, 0));
 		txtpnAmberWarning.setText("Amber Warning");
 		txtpnAmberWarning.setBounds(174, 6, 96, 16);
@@ -121,7 +121,7 @@ public class window {
 		
 		JTextPane txtpnCausedBy = new JTextPane();
 		txtpnCausedBy.setBackground(new Color(255, 140, 0));
-		txtpnCausedBy.setForeground(new Color(255, 140, 0));
+		txtpnCausedBy.setForeground(Color.BLACK);
 		txtpnCausedBy.setText("Caused By:");
 		txtpnCausedBy.setBounds(6, 30, 68, 16);
 		result.add(txtpnCausedBy);
@@ -224,6 +224,15 @@ public class window {
 		barcode_1.add(barcodeSubmit);
 		
 		JButton manualEntry = new JButton("Manual Entry");
+		manualEntry.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				profile.setVisible(false);
+				result.setVisible(false);
+				barcode_1.setVisible(false);
+				manual.setVisible(true);
+			}
+		});
 		manualEntry.setBounds(123, 39, 109, 29);
 		panel.add(manualEntry);
 		
@@ -232,6 +241,15 @@ public class window {
 		panel.add(results);
 		
 		JButton barcodeButton = new JButton("Barcode Entry");
+		barcodeButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				profile.setVisible(false);
+				result.setVisible(false);
+				barcode_1.setVisible(true);
+				manual.setVisible(false);
+			}
+		});
 		barcodeButton.setBounds(227, 39, 109, 29);
 		panel.add(barcodeButton);
 		
@@ -239,6 +257,10 @@ public class window {
 		btnProfile.addMouseListener(new MouseAdapter() {
 			
 			public void mouseClicked(MouseEvent e) {
+				profile.setVisible(true);
+				result.setVisible(false);
+				barcode_1.setVisible(false);
+				manual.setVisible(false);
 			}
 		});
 		btnProfile.setBounds(6, 39, 117, 29);
@@ -246,9 +268,17 @@ public class window {
 		results.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				profile.setVisible(false);
+				result.setVisible(true);
+				barcode_1.setVisible(false);
+				manual.setVisible(false);
 			}
 		});
+		
+		profile.setVisible(true);
+		result.setVisible(false);
+		barcode_1.setVisible(false);
+		manual.setVisible(false);
 		
 	}
 }
