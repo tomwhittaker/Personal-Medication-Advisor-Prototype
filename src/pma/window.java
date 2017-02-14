@@ -270,6 +270,7 @@ public class window {
 		btnProfile.addMouseListener(new MouseAdapter() {
 			
 			public void mouseClicked(MouseEvent e) {
+				
 				profile.setVisible(true);
 				result.setVisible(false);
 				barcode_1.setVisible(false);
