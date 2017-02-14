@@ -61,11 +61,11 @@ public class window {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		ArrayList<medication> medicationList = new ArrayList<medication>();
-		medicationList.add(new medication("TEVA UK","Bisoprolol fumarate",5,"5017007025733",28));
-		medicationList.add(new medication("BROWN& BURK","Ramipril",(float) 2.5,"5060124640457",28));
-		medicationList.add(new medication("Aspar","Dispersible Asprin",(float) 75,"5017007050520",28));
-		medicationList.add(new medication("TEVA UK","Atorvastatis",(float) 80,"5017007067719",28));
-		medicationList.add(new medication("Synthon BV","Eplerenone",(float) 25,"5391512452681",28));
+		medicationList.add(new medication("TEVA UK","Bisoprolol fumarate",5,"5017007025733",28,4));
+		medicationList.add(new medication("BROWN& BURK","Ramipril",(float) 2.5,"5060124640457",28,4));
+		medicationList.add(new medication("Aspar","Dispersible Asprin",(float) 75,"5017007050520",28,4));
+		medicationList.add(new medication("TEVA UK","Atorvastatis",(float) 80,"5017007067719",28,4));
+		medicationList.add(new medication("Synthon BV","Eplerenone",(float) 25,"5391512452681",28,4));
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(6, 6, 438, 266);
@@ -193,6 +193,19 @@ public class window {
 		dosage.setColumns(10);
 		
 		JButton manualSubmit = new JButton("Submit");
+		manualSubmit.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String company = pharma.getText();
+				String name = medi.getText();
+				Float streng = Float.valueOf(strength.getText());
+				String bar = barcode.getText();
+				int num = Integer.valueOf(number.getText());
+				int dos = Integer.valueOf(dosage.getText());
+				medication newMedicine = new medication(company, name, streng, bar, num,dos);
+				medicationList.add(newMedicine);
+			}
+		});
 		manualSubmit.setBounds(190, 162, 117, 29);
 		manual.add(manualSubmit);
 		

@@ -7,17 +7,19 @@ public class medication {
 	private float strength;
 	private String barcode;
 	private int numTablets;
+	private int dailyDosage;
 	
-	public medication(String pharma,String n,float streng, String bar, int num){
-		initialize(pharma,n,streng,bar,num);
+	public medication(String pharma,String n,float streng, String bar, int num, int dos){
+		initialize(pharma,n,streng,bar,num, dos);
 	}
 	
-	public void initialize(String pharma,String n,float streng, String bar, int num){
+	public void initialize(String pharma,String n,float streng, String bar, int num, int dos){
 		pharmaceuticalCompany = pharma;
 		name = n;
 		strength = streng;
 		barcode = bar;
 		numTablets = num;
+		dailyDosage = dos;
 	}
 	
 	public String getName(){
@@ -38,5 +40,9 @@ public class medication {
 	
 	public int getNumTablets(){
 		return numTablets;
+	}
+	
+	public int getDailyDosage(){
+		return dailyDosage;
 	}
 }
