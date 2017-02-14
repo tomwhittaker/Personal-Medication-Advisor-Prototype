@@ -78,35 +78,6 @@ public class window {
 		txtpnPersonalMedicationAdvisor.setBackground(UIManager.getColor("Button.background"));
 		txtpnPersonalMedicationAdvisor.setText("Personal Medication Advisor");
 		
-		JPanel result = new JPanel();
-		result.setBackground(new Color(255, 140, 0));
-		result.setBounds(6, 69, 438, 191);
-		panel.add(result);
-		result.setLayout(null);
-		
-		JTextPane txtpnAmberWarning = new JTextPane();
-		txtpnAmberWarning.setForeground(Color.BLACK);
-		txtpnAmberWarning.setBackground(new Color(255, 140, 0));
-		txtpnAmberWarning.setText("Amber Warning");
-		txtpnAmberWarning.setBounds(174, 6, 96, 16);
-		result.add(txtpnAmberWarning);
-		
-		JTextPane txtpnCausedBy = new JTextPane();
-		txtpnCausedBy.setBackground(new Color(255, 140, 0));
-		txtpnCausedBy.setForeground(Color.BLACK);
-		txtpnCausedBy.setText("Caused By:");
-		txtpnCausedBy.setBounds(6, 30, 68, 16);
-		result.add(txtpnCausedBy);
-		
-		JTextArea txtrBisoprololFumarateAnd = new JTextArea();
-		txtrBisoprololFumarateAnd.setBackground(new Color(255, 140, 0));
-		txtrBisoprololFumarateAnd.setForeground(new Color(0, 0, 0));
-		txtrBisoprololFumarateAnd.setText("Bisoprolol fumarate and Ramipril\nEplerenone and Atorvastatis");
-		txtrBisoprololFumarateAnd.setRows(2);
-		txtrBisoprololFumarateAnd.setBounds(27, 58, 385, 107);
-		result.add(txtrBisoprololFumarateAnd);
-		result.setVisible(false);
-		
 		JPanel profile = new JPanel();
 		profile.setBounds(6, 69, 438, 191);
 		panel.add(profile);
@@ -134,6 +105,34 @@ public class window {
 		textArea_1.setBackground(SystemColor.window);
 		textArea_1.setBounds(323, 25, 109, 160);
 		profile.add(textArea_1);
+		
+		JPanel result = new JPanel();
+		result.setBackground(new Color(255, 140, 0));
+		result.setBounds(6, 69, 438, 191);
+		panel.add(result);
+		result.setLayout(null);
+		
+		JTextPane txtpnAmberWarning = new JTextPane();
+		txtpnAmberWarning.setForeground(new Color(255, 140, 0));
+		txtpnAmberWarning.setBackground(new Color(255, 140, 0));
+		txtpnAmberWarning.setText("Amber Warning");
+		txtpnAmberWarning.setBounds(174, 6, 96, 16);
+		result.add(txtpnAmberWarning);
+		
+		JTextPane txtpnCausedBy = new JTextPane();
+		txtpnCausedBy.setBackground(new Color(255, 140, 0));
+		txtpnCausedBy.setForeground(new Color(255, 140, 0));
+		txtpnCausedBy.setText("Caused By:");
+		txtpnCausedBy.setBounds(6, 30, 68, 16);
+		result.add(txtpnCausedBy);
+		
+		JTextArea txtrBisoprololFumarateAnd = new JTextArea();
+		txtrBisoprololFumarateAnd.setBackground(new Color(255, 140, 0));
+		txtrBisoprololFumarateAnd.setForeground(new Color(0, 0, 0));
+		txtrBisoprololFumarateAnd.setText("Bisoprolol fumarate and Ramipril\nEplerenone and Atorvastatis");
+		txtrBisoprololFumarateAnd.setRows(2);
+		txtrBisoprololFumarateAnd.setBounds(27, 58, 385, 107);
+		result.add(txtrBisoprololFumarateAnd);
 		
 		JPanel manual = new JPanel();
 		manual.setBounds(6, 69, 438, 191);
@@ -275,8 +274,6 @@ public class window {
 				barcode_1.setVisible(false);
 			}
 		});
-		profile.setVisible(true);
-		manual.setVisible(false);
-		barcode_1.setVisible(false);
+		
 	}
 }
