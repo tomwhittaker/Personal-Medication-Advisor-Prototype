@@ -78,6 +78,43 @@ public class window {
 		txtpnPersonalMedicationAdvisor.setBackground(UIManager.getColor("Button.background"));
 		txtpnPersonalMedicationAdvisor.setText("Personal Medication Advisor");
 		
+		JPanel barcode_1 = new JPanel();
+		barcode_1.setBounds(6, 69, 438, 191);
+		panel.add(barcode_1);
+		barcode_1.setLayout(null);
+		
+		textField = new JTextField();
+		textField.setBounds(148, 99, 130, 26);
+		barcode_1.add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(148, 48, 130, 26);
+		barcode_1.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblBarcode_1 = new JLabel("Barcode:");
+		lblBarcode_1.setBounds(83, 53, 53, 16);
+		barcode_1.add(lblBarcode_1);
+		
+		JLabel lblDailyDosage_1 = new JLabel("Daily Dosage:");
+		lblDailyDosage_1.setBounds(49, 104, 87, 16);
+		barcode_1.add(lblDailyDosage_1);
+		
+		JButton barcodeSubmit = new JButton("Submit");
+		barcodeSubmit.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String bar = textField_1.getText();
+				int dos = Integer.valueOf(textField.getText());
+				medication newMedication = new medication("null", "null", 0, bar, 0, dos);
+				medicationList.add(newMedication);
+			}
+		});
+		barcodeSubmit.setBounds(158, 144, 117, 29);
+		barcode_1.add(barcodeSubmit);
+		barcode_1.setVisible(false);
+		
 		JPanel profile = new JPanel();
 		profile.setBounds(6, 69, 438, 191);
 		panel.add(profile);
@@ -209,33 +246,6 @@ public class window {
 		manualSubmit.setBounds(190, 162, 117, 29);
 		manual.add(manualSubmit);
 		
-		JPanel barcode_1 = new JPanel();
-		barcode_1.setBounds(6, 69, 438, 191);
-		panel.add(barcode_1);
-		barcode_1.setLayout(null);
-		
-		textField = new JTextField();
-		textField.setBounds(148, 99, 130, 26);
-		barcode_1.add(textField);
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(148, 48, 130, 26);
-		barcode_1.add(textField_1);
-		textField_1.setColumns(10);
-		
-		JLabel lblBarcode_1 = new JLabel("Barcode:");
-		lblBarcode_1.setBounds(83, 53, 53, 16);
-		barcode_1.add(lblBarcode_1);
-		
-		JLabel lblDailyDosage_1 = new JLabel("Daily Dosage:");
-		lblDailyDosage_1.setBounds(49, 104, 87, 16);
-		barcode_1.add(lblDailyDosage_1);
-		
-		JButton barcodeSubmit = new JButton("Submit");
-		barcodeSubmit.setBounds(158, 144, 117, 29);
-		barcode_1.add(barcodeSubmit);
-		
 		JButton manualEntry = new JButton("Manual Entry");
 		manualEntry.addMouseListener(new MouseAdapter() {
 			@Override
@@ -295,7 +305,6 @@ public class window {
 		
 		profile.setVisible(true);
 		result.setVisible(false);
-		barcode_1.setVisible(false);
 		manual.setVisible(false);
 		
 	}
