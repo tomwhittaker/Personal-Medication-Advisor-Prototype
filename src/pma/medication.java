@@ -45,4 +45,8 @@ public class medication {
 	public int getDailyDosage(){
 		return dailyDosage;
 	}
+	
+	public int getWeeklyDosage(){
+		return dailyDosage*7;
+	}
 }

@@ -107,8 +107,6 @@ public class window {
 			public void mouseClicked(MouseEvent e) {
 				String bar = textField_1.getText();
 				int dos = Integer.valueOf(textField.getText());
-				medication newMedication = new medication("null", "null", 0, bar, 0, dos);
-				medicationList.add(newMedication);
 			}
 		});
 		barcodeSubmit.setBounds(158, 144, 117, 29);
@@ -241,6 +239,15 @@ public class window {
 				int dos = Integer.valueOf(dosage.getText());
 				medication newMedicine = new medication(company, name, streng, bar, num,dos);
 				medicationList.add(newMedicine);
+				textArea.setText("");
+				for (medication medication : medicationList){
+					
+					textArea.append(medication.getName()+"\n");
+				}
+				profile.setVisible(true);
+				result.setVisible(false);
+				barcode_1.setVisible(false);
+				manual.setVisible(false);
 			}
 		});
 		manualSubmit.setBounds(190, 162, 117, 29);
@@ -302,7 +309,10 @@ public class window {
 				manual.setVisible(false);
 			}
 		});
-		
+		for (medication medication : medicationList){
+			
+			textArea.append(medication.getName()+"\n");
+		}
 		profile.setVisible(true);
 		result.setVisible(false);
 		manual.setVisible(false);
