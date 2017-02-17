@@ -1,19 +1,19 @@
 package pma;
 
-public class medication {
+public class Medication {
 	
 	private String pharmaceuticalCompany;
 	private String name;
-	private float strength;
+	private double strength;
 	private String barcode;
 	private int numTablets;
 	private int dailyDosage;
 	
-	public medication(String pharma,String n,float streng, String bar, int num, int dos){
+	public Medication(String pharma,String n,double streng, String bar, int num, int dos){
 		initialize(pharma,n,streng,bar,num, dos);
 	}
 	
-	public void initialize(String pharma,String n,float streng, String bar, int num, int dos){
+	public void initialize(String pharma,String n,double streng, String bar, int num, int dos){
 		pharmaceuticalCompany = pharma;
 		name = n;
 		strength = streng;
@@ -30,7 +30,7 @@ public class medication {
 		return pharmaceuticalCompany;
 	}
 	
-	public float getStrength(){
+	public double getStrength(){
 		return strength;
 	}
 	
@@ -48,5 +48,10 @@ public class medication {
 	
 	public int getWeeklyDosage(){
 		return dailyDosage*7;
+	}
+
+	@Override
+	public String toString() {
+		return "Medication [name=" + name + "]";
 	}
 }

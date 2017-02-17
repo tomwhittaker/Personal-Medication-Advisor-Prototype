@@ -27,7 +27,14 @@ public class window {
 	private JTextField dosage;
 	private JTextField textField;
 	private JTextField textField_1;
-	private ArrayList<medication> medicationList;
+	private JTextField numError;
+	private JTextArea textArea;
+	private JPanel profile;
+	private JPanel barcode_1;
+	private JPanel result;
+	private ArrayList<Medication> medicationList;
+	private ArrayList<String> errors;
+	
 
 	/**
 	 * Launch the application.
@@ -60,12 +67,14 @@ public class window {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		ArrayList<medication> medicationList = new ArrayList<medication>();
-		medicationList.add(new medication("TEVA UK","Bisoprolol fumarate",5,"5017007025733",28,4));
-		medicationList.add(new medication("BROWN& BURK","Ramipril",(float) 2.5,"5060124640457",28,4));
-		medicationList.add(new medication("Aspar","Dispersible Asprin",(float) 75,"5017007050520",28,4));
-		medicationList.add(new medication("TEVA UK","Atorvastatis",(float) 80,"5017007067719",28,4));
-		medicationList.add(new medication("Synthon BV","Eplerenone",(float) 25,"5391512452681",28,4));
+		ArrayList<Medication> medicationList = new ArrayList<Medication>();
+		medicationList.add(new Medication("TEVA UK","Bisoprolol fumarate",5,"5017007025733",28,4));
+		medicationList.add(new Medication("BROWN& BURK","Ramipril",(float) 2.5,"5060124640457",28,4));
+		medicationList.add(new Medication("Aspar","Dispersible Asprin",(float) 75,"5017007050520",28,4));
+		medicationList.add(new Medication("TEVA UK","Atorvastatis",(float) 80,"5017007067719",28,4));
+		medicationList.add(new Medication("Synthon BV","Eplerenone",(float) 25,"5391512452681",28,4));
+		
+		
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(6, 6, 438, 266);
@@ -105,13 +114,40 @@ public class window {
 		barcodeSubmit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String bar = textField_1.getText();
-				int dos = Integer.valueOf(textField.getText());
 			}
 		});
 		barcodeSubmit.setBounds(158, 144, 117, 29);
 		barcode_1.add(barcodeSubmit);
 		barcode_1.setVisible(false);
+		
+		JPanel result_1 = new JPanel();
+		result_1.setBackground(new Color(255, 140, 0));
+		result_1.setBounds(6, 69, 438, 191);
+		panel.add(result_1);
+		result_1.setLayout(null);
+		
+		JTextPane txtpnAmberWarning = new JTextPane();
+		txtpnAmberWarning.setForeground(Color.BLACK);
+		txtpnAmberWarning.setBackground(new Color(255, 140, 0));
+		txtpnAmberWarning.setText("Amber Warning");
+		txtpnAmberWarning.setBounds(174, 6, 96, 16);
+		result_1.add(txtpnAmberWarning);
+		
+		JTextPane txtpnCausedBy = new JTextPane();
+		txtpnCausedBy.setBackground(new Color(255, 140, 0));
+		txtpnCausedBy.setForeground(Color.BLACK);
+		txtpnCausedBy.setText("Caused By:");
+		txtpnCausedBy.setBounds(6, 30, 68, 16);
+		result_1.add(txtpnCausedBy);
+		
+		JTextArea txtrBisoprololFumarateAnd = new JTextArea();
+		txtrBisoprololFumarateAnd.setBackground(new Color(255, 140, 0));
+		txtrBisoprololFumarateAnd.setForeground(new Color(0, 0, 0));
+		txtrBisoprololFumarateAnd.setText("Bisoprolol fumarate and Ramipril\nEplerenone and Atorvastatis");
+		txtrBisoprololFumarateAnd.setRows(2);
+		txtrBisoprololFumarateAnd.setBounds(27, 58, 385, 107);
+		result_1.add(txtrBisoprololFumarateAnd);
+		result_1.setVisible(false);
 		
 		JPanel profile = new JPanel();
 		profile.setBounds(6, 69, 438, 191);
@@ -140,34 +176,6 @@ public class window {
 		textArea_1.setBackground(SystemColor.window);
 		textArea_1.setBounds(323, 25, 109, 160);
 		profile.add(textArea_1);
-		
-		JPanel result = new JPanel();
-		result.setBackground(new Color(255, 140, 0));
-		result.setBounds(6, 69, 438, 191);
-		panel.add(result);
-		result.setLayout(null);
-		
-		JTextPane txtpnAmberWarning = new JTextPane();
-		txtpnAmberWarning.setForeground(Color.BLACK);
-		txtpnAmberWarning.setBackground(new Color(255, 140, 0));
-		txtpnAmberWarning.setText("Amber Warning");
-		txtpnAmberWarning.setBounds(174, 6, 96, 16);
-		result.add(txtpnAmberWarning);
-		
-		JTextPane txtpnCausedBy = new JTextPane();
-		txtpnCausedBy.setBackground(new Color(255, 140, 0));
-		txtpnCausedBy.setForeground(Color.BLACK);
-		txtpnCausedBy.setText("Caused By:");
-		txtpnCausedBy.setBounds(6, 30, 68, 16);
-		result.add(txtpnCausedBy);
-		
-		JTextArea txtrBisoprololFumarateAnd = new JTextArea();
-		txtrBisoprololFumarateAnd.setBackground(new Color(255, 140, 0));
-		txtrBisoprololFumarateAnd.setForeground(new Color(0, 0, 0));
-		txtrBisoprololFumarateAnd.setText("Bisoprolol fumarate and Ramipril\nEplerenone and Atorvastatis");
-		txtrBisoprololFumarateAnd.setRows(2);
-		txtrBisoprololFumarateAnd.setBounds(27, 58, 385, 107);
-		result.add(txtrBisoprololFumarateAnd);
 		
 		JPanel manual = new JPanel();
 		manual.setBounds(6, 69, 438, 191);
@@ -227,44 +235,88 @@ public class window {
 		manual.add(dosage);
 		dosage.setColumns(10);
 		
+		JTextPane strengthError = new JTextPane();
+		strengthError.setBackground(SystemColor.window);
+		strengthError.setBounds(322, 62, 98, 16);
+		manual.add(strengthError);
+		
+		JTextPane numError_1 = new JTextPane();
+		numError_1.setBackground(SystemColor.window);
+		numError_1.setBounds(322, 118, 98, 16);
+		manual.add(numError_1);
+		
+		JTextPane dosError = new JTextPane();
+		dosError.setBackground(SystemColor.window);
+		dosError.setBounds(322, 146, 98, 16);
+		manual.add(dosError);
+		
 		JButton manualSubmit = new JButton("Submit");
 		manualSubmit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String company = pharma.getText();
 				String name = medi.getText();
-				Float streng = Float.valueOf(strength.getText());
 				String bar = barcode.getText();
-				int num = Integer.valueOf(number.getText());
-				int dos = Integer.valueOf(dosage.getText());
-				medication newMedicine = new medication(company, name, streng, bar, num,dos);
-				medicationList.add(newMedicine);
-				textArea.setText("");
-				for (medication medication : medicationList){
-					
-					textArea.append(medication.getName()+"\n");
+				double streng = 1;
+				int num =1;
+				int dos = 1;
+				boolean error=false;
+				try{
+					try{
+						streng = Float.valueOf(strength.getText());
+						strengthError.setText("");
+					}catch (NumberFormatException t){
+						strengthError.setText("Not a number");
+						error=true;
+					}
+					try{
+						num = Integer.valueOf(number.getText());
+						numError_1.setText("");
+					}catch (NumberFormatException t){
+						numError_1.setText("Not at number");
+						error=true;
+					}
+					try{
+						dos = Integer.valueOf(dosage.getText());
+						dosError.setText("");
+					}catch (NumberFormatException t){
+						dosError.setText("Not a number");
+						error=true;
+					}
+					if (streng<0){
+						strengthError.setText("Negative Number");
+						error=true;
+					}
+					if (num<0){
+						numError_1.setText("Negative Number");
+						error=true;
+					}
+					if (dos<0){
+						dosError.setText("Negative Number");
+						error=true;
+					}
+					if (error){
+						throw new FormException();
+					}
+					Medication newMedicine = new Medication(company, name, streng, bar, num,dos);
+					medicationList.add(newMedicine);
+					textArea.setText("");
+					for (Medication medication : medicationList){
+						
+						textArea.append(medication.getName()+"\n");
+					}
+					profile.setVisible(true);
+					result_1.setVisible(false);
+					barcode_1.setVisible(false);
+					manual.setVisible(false);
+				}catch (FormException t){
 				}
-				profile.setVisible(true);
-				result.setVisible(false);
-				barcode_1.setVisible(false);
-				manual.setVisible(false);
+				
 			}
 		});
 		manualSubmit.setBounds(190, 162, 117, 29);
 		manual.add(manualSubmit);
-		
-		JButton manualEntry = new JButton("Manual Entry");
-		manualEntry.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				profile.setVisible(false);
-				result.setVisible(false);
-				barcode_1.setVisible(false);
-				manual.setVisible(true);
-			}
-		});
-		manualEntry.setBounds(123, 39, 109, 29);
-		panel.add(manualEntry);
+		manual.setVisible(false);
 		
 		JButton results = new JButton("Results");
 		results.setBounds(335, 39, 109, 29);
@@ -275,7 +327,7 @@ public class window {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				profile.setVisible(false);
-				result.setVisible(false);
+				result_1.setVisible(false);
 				barcode_1.setVisible(true);
 				manual.setVisible(false);
 			}
@@ -288,34 +340,45 @@ public class window {
 			
 			public void mouseClicked(MouseEvent e) {
 				textArea.setText("");
-				for (medication medication : medicationList){
+				for (Medication medication : medicationList){
 					
 					textArea.append(medication.getName()+"\n");
 				}
 				profile.setVisible(true);
-				result.setVisible(false);
+				result_1.setVisible(false);
 				barcode_1.setVisible(false);
 				manual.setVisible(false);
 			}
 		});
 		btnProfile.setBounds(6, 39, 117, 29);
 		panel.add(btnProfile);
+		
+		JButton manualEntry = new JButton("Manual Entry");
+		manualEntry.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				profile.setVisible(false);
+				result_1.setVisible(false);
+				barcode_1.setVisible(false);
+				manual.setVisible(true);
+			}
+		});
+		manualEntry.setBounds(123, 39, 109, 29);
+		panel.add(manualEntry);
 		results.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				profile.setVisible(false);
-				result.setVisible(true);
+				result_1.setVisible(true);
 				barcode_1.setVisible(false);
 				manual.setVisible(false);
 			}
 		});
-		for (medication medication : medicationList){
+		for (Medication medication : medicationList){
 			
 			textArea.append(medication.getName()+"\n");
 		}
 		profile.setVisible(true);
-		result.setVisible(false);
-		manual.setVisible(false);
 		
 	}
 }
